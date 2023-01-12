@@ -1271,39 +1271,41 @@ stream = SubResource("1")
 script = ExtResource("37")
 
 [node name="PropContainer" type="Node2D" parent="."]
-position = Vector2(-320, -120)
 z_index = 5
+position = Vector2(-320, -120)
 
 [node name="Prop" parent="PropContainer" instance=ExtResource("47")]
 
 [node name="On" parent="." instance=ExtResource("3")]
 visible = false
+z_index = 1
 position = Vector2(330.238, 208.252)
 scale = Vector2(0.999286, 0.972718)
-z_index = 1
 
 [node name="Smile_Talk" parent="." instance=ExtResource("3")]
 visible = false
+z_index = 1
 position = Vector2(300, 223)
 scale = Vector2(0.999286, 0.972718)
-z_index = 1
 texture = ExtResource("6_v7cmt")
 
 [node name="Smile" parent="." instance=ExtResource("3")]
+visible = false
+z_index = 1
 position = Vector2(300, 223)
 scale = Vector2(0.999286, 0.972718)
-z_index = 1
 texture = ExtResource("7_ywd35")
 
 [node name="Off" parent="." instance=ExtResource("2")]
-scale = Vector2(1, 1)
+visible = true
 z_index = 1
+scale = Vector2(1, 1)
 
 [node name="Scream" parent="." instance=ExtResource("2")]
 visible = true
+z_index = 1
 position = Vector2(322.679, 208.252)
 scale = Vector2(1, 1)
-z_index = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1394,9 +1396,9 @@ offset_bottom = 29.0
 grow_vertical = 2
 
 [node name="Sprite" type="Sprite2D" parent="CanvasLayer/ToHide/Panel2"]
+z_index = -2
 position = Vector2(145, 336)
 scale = Vector2(0.987356, 1)
-z_index = -2
 texture = ExtResource("26")
 
 [node name="Default Mic" type="Label" parent="CanvasLayer/ToHide/Panel2"]
@@ -1435,8 +1437,8 @@ grow_vertical = 2
 
 [node name="Sprite" type="Sprite2D" parent="CanvasLayer/ToHide/Panel3"]
 visible = false
-position = Vector2(152, 338)
 z_index = -1
+position = Vector2(152, 338)
 texture = ExtResource("46")
 
 [node name="ShowBtn3" type="Button" parent="CanvasLayer/ToHide/Panel3"]

@@ -165,6 +165,7 @@ var prop1_file = "user://prop1.save"
 var bouncy_file = "user://bouncy.save"
 var shaky_file = "user://shaky.save"
 var dim_file = "user://dim.save"
+var last_pos_file = "user://last_pos_file.save"
 
 var interval_A1 = "user://interval_A1.save"
 var interval_A2 = "user://interval_A2.save"
@@ -429,21 +430,22 @@ func _ready():
 	load_prop_zoom()
 	switch_preset()
 	load_hotkeys()
+	load_last_pos()
+	print("Current offset: ", current_pos)
+	$On.set_offset(current_pos)
+	$Off.set_offset(current_pos)
+	$Scream.set_offset(current_pos)
+	$Smile.set_offset(current_pos)
+	$Smile_Talk.set_offset(current_pos)
 	
-	$On.set_offset(center_w)
-	$Off.set_offset(center_w)
-	$Scream.set_offset(center_w)
-	$Smile.set_offset(center_w)
-	$Smile_Talk.set_offset(center_w)
-	
-	
+	image_size = $Off.get_rect().size
 	load_audio()
 
 	
 #	$Timer.wait_time = 0.000001
 #	var h_ = $On.texture.get_height()
 	
-	#print(AudioServer.capture_get_device())
+	#print(AudioSserver.capture_get_device())
 	$CanvasLayer/ToHide/Panel2/VBoxContainer.hide() 
 #	$CanvasLayer.hide()
 	
@@ -465,6 +467,24 @@ var start_ = 0
 var delay_count = 0
 var center_w = Vector2(-300,-228)
 var delay_tmp
+var current_pos 
+
+func load_last_pos():
+	if FileAccess.file_exists(last_pos_file):
+		var file =FileAccess.open(last_pos_file, FileAccess.READ)
+		current_pos = file.get_var()
+		center_w = current_pos
+	else:
+		current_pos = center_w
+	
+
+func save_last_pos():
+	var file =FileAccess.open(last_pos_file, FileAccess.WRITE)
+	if $On.visible:
+		file.store_var($On.get_offset())
+	elif $Off.visible:
+		file.store_var($Off.get_offset())
+	print("Last pos: ", $Off.get_offset(),$On.get_offset())
 
 func _physics_process(delta):
 	count_frame +=1
@@ -513,10 +533,12 @@ func _physics_process(delta):
 	#OS.native_video_unpause()
 #	print("Position in audio playing: ",music_player.get_playback_position())
 	#(previous_time - music_player.get_playback_position()) > 0:
-	
+#	current_pos = 
+#	print(isVibing,"Frame :", count_frame, ": On-",$On.get_offset() , Vector2(displacementX,displacementY),Vector2(snapped(image_size[0]/831,0.0001),snapped(image_size[1]/552,0.0001)))
 	if music_player.get_playback_position() == 0 and (not music_player.is_playing()) :
 		delay_count +=1
 		if delay_count >= 3:
+			save_last_pos()
 			get_tree().quit()
 			if("output_mp4" in input_arg):
 				var path_video = input_arg["output_mp4"].split(".mp4")[0] +".avi"
@@ -532,7 +554,7 @@ func _physics_process(delta):
 	
 #	
 
-
+var image_size 
 func vibing(isVibing):
 	if(isVibing):
 		if(displacementX > vibeXmax and changeCount == 0):
@@ -619,12 +641,14 @@ func vibing(isVibing):
 		if (displacementAmount < -0.3):
 			displacementAmount = -0.3
 		
+		
 		displacementX += displacementAmount
 		displacementY += displacementAmountY
 
-		var displacement = center_w + Vector2(displacementX, displacementY)
+		var displacement = center_w + Vector2(displacementX*snapped(image_size[0]/831,0.0001), displacementY*snapped(image_size[1]/552,0.0001))
 		$Off.set_offset(displacement)
 		$On.set_offset(displacement)
+		current_pos = displacement
 
 
 func shaking(isShaking):
@@ -641,9 +665,10 @@ func shaking(isShaking):
 		displacementX += displacementAmount
 		displacementY += displacementAmountY
 		
-		var displacement = center_w + Vector2(displacementX, displacementY)
+		var displacement = center_w + Vector2(displacementX*snapped(image_size[0]/831,0.0001), displacementY*snapped(image_size[1]/552,0.0001))
 		$Off.set_offset(displacement)
 		$On.set_offset(displacement)
+		current_pos = displacement
 
 
 func shakingMore(isShakingMore):
@@ -654,9 +679,10 @@ func shakingMore(isShakingMore):
 		displacementX += displacementAmount
 		displacementY += displacementAmountY
 		
-		var displacement = center_w + Vector2(displacementX, displacementY)
+		var displacement = center_w + Vector2(displacementX*snapped(image_size[0]/831,0.0001), displacementY*snapped(image_size[1]/552,0.0001))
 		$Off.set_offset(displacement)
 		$On.set_offset(displacement)
+		current_pos = displacement
 
 func bouncy(isBouncy):
 	if(isBouncy):
@@ -665,9 +691,10 @@ func bouncy(isBouncy):
 		else:
 			bounceRate -= 0.25
 		displacementY += bounceRate
-		var displacement =center_w + Vector2(0, -1 * displacementY)
+		var displacement = center_w + Vector2(displacementX*snapped(image_size[0]/831,0.0001), displacementY*snapped(image_size[1]/552,0.0001))
 		$Off.set_offset(displacement)
 		$On.set_offset(displacement)
+		current_pos = displacement
 
 func excited(isExcited):
 	if(isExcited):
@@ -679,9 +706,10 @@ func excited(isExcited):
 		
 		displacementX += bounceX
 		displacementY += excitedBounceRate
-		var displacement = center_w + Vector2(displacementX, -1 * displacementY)
+		var displacement = center_w + Vector2(displacementX*snapped(image_size[0]/831,0.0001), displacementY*snapped(image_size[1]/552,0.0001))
 		$Off.set_offset(displacement)
 		$On.set_offset(displacement)
+		current_pos = displacement
 
 func nervous(isNervous):
 	if(isNervous):
@@ -693,9 +721,10 @@ func nervous(isNervous):
 		
 		displacementX += bounceX
 		displacementY += nervousBounceRate
-		var displacement = center_w + Vector2(displacementX, -1 * displacementY)
+		var displacement = center_w + Vector2(displacementX*snapped(image_size[0]/831,0.0001), displacementY*snapped(image_size[1]/552,0.0001))
 		$Off.set_offset(displacement)
 		$On.set_offset(displacement)
+		current_pos = displacement
 
 
 
@@ -843,14 +872,14 @@ func voice_cap_audio(_delta):
 		
 		stopped_talking = false
 		if is_talking == false and can_bounce == true:
-			$AnimationPlayer.play("Talk")
+#			$AnimationPlayer.play("Talk")
 #			$AnimationPlayer.play("TalkNoBounce")
 			is_talking = true
 #			isBouncy=true
 			is_timer = false
 			$Timer.stop()
 		elif is_talking == false and can_bounce == false:
-			$AnimationPlayer.play("TalkNoBounce")
+#			$AnimationPlayer.play("TalkNoBounce")
 			is_talking = true
 			is_timer = false
 			$Timer.stop()
@@ -875,12 +904,12 @@ func voice_cap_audio(_delta):
 		
 		stopped_talking = false
 #		if is_talking == false and can_bounce == true:
-		if $Scream.texture == null and can_bounce:
-			$AnimationPlayer.play("Talk")
-		elif $Scream.texture == null and can_bounce == false:
-			$AnimationPlayer.play("TalkNoBounce")
-		else:
-			$AnimationPlayer.play("ScreamNoShake")
+#		if $Scream.texture == null and can_bounce:
+#			$AnimationPlayer.play("Talk")
+#		elif $Scream.texture == null and can_bounce == false:
+#			$AnimationPlayer.play("TalkNoBounce")
+#		else:
+#			$AnimationPlayer.play("ScreamNoShake")
 		is_talking = true
 		is_timer = false
 		$Timer.wait_time = delay_main #0.1/pitch_scale
@@ -896,7 +925,7 @@ func voice_cap_audio(_delta):
 			is_timer = true
 			
 	
-	var emotion= "angry"
+	var emotion= "neutral"
 	if("emotion" in input_arg) :
 		emotion=input_arg["emotion"]
 	
@@ -909,6 +938,7 @@ func voice_cap_audio(_delta):
 #		isExcited=true
 
 		if(is_talking==true):
+#			print("playing no bounce")
 			$AnimationPlayer.play("TalkNoBounce")
 		isVibing=true
 		if(power > limiter  and power >= sLimiter ): # scream
@@ -1362,7 +1392,7 @@ func _on_Timer_timeout():
 		stopped_talking = true
 #		$Timer.wait_time = 0.3
 	
-var music_file = "res://audio/emotion/angry/DV28_Emo_Seg_Pulls_14.mp3"
+var music_file = "res://input_audio/test_0p18_spanish.mp3"
 var music_player = AudioStreamPlayer.new()
 var stream_audio = AudioLoader.new()
 var pitch_scale = 1
