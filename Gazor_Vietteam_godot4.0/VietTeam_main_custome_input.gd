@@ -39,7 +39,7 @@ var is_blinking = false
 var can_bounce = true
 var can_blink = true
 var can_shake = true
-var can_dim = true
+var can_dim = false
 var is_talking = false
 var is_timer = false
 var limiter = 0
@@ -2244,21 +2244,22 @@ func load_camzoom():
 
 	if cam_all:
 		if FileAccess.file_exists(camzoom_file_Z):
+			print("camzoom not exist")
 			var file =FileAccess.open(camzoom_file_Z, FileAccess.READ)
 			$Camera2D.zoom = file.get_var()
-			if $Off.texture != null:
-				var img_h = $Off.texture.get_size()
-				var win_h = DisplayServer.window_get_size()
+		if $Off.texture != null:
+			var img_h = $Off.texture.get_size()
+			var win_h = DisplayServer.window_get_size()
 #				print("auto_focus: ", img_h,win_h)
-				var auto_focus = min(snapped(float(win_h[0])/float(img_h[0]),0.0001),snapped(float(win_h[1])/float(img_h[1]),0.0001))
-				#if auto_focus > 1:
-					#auto_focus = snapped(float(1)/auto_focus,0.0001)
-				auto_focus = auto_focus*scale_image
-				print("************scale_image************=",scale_image)
-				print("auto_focus: ", auto_focus)
+			var auto_focus = min(snapped(float(win_h[0])/float(img_h[0]),0.0001),snapped(float(win_h[1])/float(img_h[1]),0.0001))
+			#if auto_focus > 1:
+				#auto_focus = snapped(float(1)/auto_focus,0.0001)
+			auto_focus = auto_focus*scale_image
+			print("************scale_image************=",scale_image)
+			print("auto_focus: ", auto_focus)
 #				var auto_zoom = snapped(float(1)/auto_focus,0.1)
 #				print("auto_zoom: ", auto_zoom)
-				$Camera2D.zoom = Vector2(auto_focus,auto_focus)
+			$Camera2D.zoom = Vector2(auto_focus,auto_focus)
 			
 			#file.close()
 			camzoom = $Camera2D.zoom

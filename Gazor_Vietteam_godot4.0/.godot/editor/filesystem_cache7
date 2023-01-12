@@ -1,5 +1,5 @@
 0b7126e0c6e86d3ec295a72f5aa6e0bd
-::res://::1673512487
+::res://::1673522154
 Area2D.gd::GDScript::-1::1673503532::0::1::::<>Area2D<>::
 AudioStreamRecord.gd::GDScript::-1::1673503532::0::1::::<>AudioStreamPlayer<>::
 Audio_bk_25Nov.gd::GDScript::-1::1673503532::0::1::::<>Control<>::
@@ -12,7 +12,7 @@ CanvasLayer.gd::GDScript::-1::1673503532::0::1::::<>CanvasLayer<>::
 CanvasLayer.tscn::PackedScene::-1::1673503532::0::1::::<><>::res://CanvasLayer.gd
 Client.gd::GDScript::-1::1673503532::0::1::::<>Control<>::
 Client.tscn::PackedScene::-1::1673503532::0::1::::<><>::res://Client.gd
-default_bus_layout.tres::AudioBusLayout::9151933646992978182::1673507100::0::1::::<><>::
+default_bus_layout.tres::AudioBusLayout::9151933646992978182::1673512489::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1673503532::0::1::::<><>::
 Gazo Bg.png::CompressedTexture2D::3574830658416476736::1673503532::1673503532::1::::<><>::
 Gazo Icon.png::Image::6672367892070965438::1673503532::1673503532::1::::<><>::
@@ -28,7 +28,7 @@ Host.gd::GDScript::-1::1673503532::0::1::::<>Control<>::
 Host.tscn::PackedScene::-1::1673503532::0::1::::<><>::res://Arts/FileDialog.png<>res://Networking.tscn<>res://Host.gd
 Join.tscn::PackedScene::-1::1673503532::0::1::::<><>::res://Networking.tscn
 KinematicBody2D.gd::GDScript::-1::1673503532::0::1::::<>KinematicBody2D<>::
-Main2.tscn::PackedScene::3899878817899524387::1673507677::0::1::::<><>::res://VietTeam_main_custome_input.gd<>res://Off.tscn<>res://On.tscn<>res://Camera2D.gd<>uid://uk5y3on27it0<>uid://bkwiqflqi5wx1<>uid://iwvreirxlvqf<>uid://1s1lt0mjgnwq<>uid://cavhxkbuu52q3<>uid://xm5yia6nr0ah<>uid://dbmgf12e5vftp<>uid://bao7hikuw5tp6<>uid://dcdn8wfbbjk4p<>uid://b22i7lk53hw7b<>uid://vhgytrie538e<>uid://dql0ck8m18ex<>uid://d0enhf7gpmh52<>uid://dr1xwywv1ddkj<>uid://c8ku8s8vexols<>uid://bylsj1a8job7u<>uid://dnnr88ufowi0b<>uid://c0kx2lyy1icec<>uid://fjpba34qx8eu<>res://Panel2.gd<>uid://fi112ujjoqo8<>uid://hbiakh7c5l3w<>uid://77pa7q2imhmn<>uid://dcvkb5nmueh1r<>uid://xp5l8vv7bd85<>uid://c04kisf7ljybw<>uid://bye35yhdcewg3<>uid://y6eke7bi8hm3<>uid://cm37wn82aykn6<>uid://bxj0xu6tjia74<>uid://bnq5sd3v8t4ea<>uid://cvjfjv417y5x3<>res://AudioStreamRecord.gd<>uid://7anebcn40fhk<>uid://rp251srcbsj4<>uid://dgwof1dh4cp2d<>uid://ba4grwnqsih6g<>uid://bxyut0xbhc148<>uid://bv3edccq3taul<>uid://rb8s6wni2ahs<>uid://b5e7xeujc7a2i<>res://Prop.tscn<>uid://tqnta1w64qpw<>uid://ch6eh4svkgjqh
+Main2.tscn::PackedScene::3899878817899524387::1673512489::0::1::::<><>::res://VietTeam_main_custome_input.gd<>res://Off.tscn<>res://On.tscn<>res://Camera2D.gd<>uid://uk5y3on27it0<>uid://bkwiqflqi5wx1<>uid://iwvreirxlvqf<>uid://1s1lt0mjgnwq<>uid://cavhxkbuu52q3<>uid://xm5yia6nr0ah<>uid://dbmgf12e5vftp<>uid://bao7hikuw5tp6<>uid://dcdn8wfbbjk4p<>uid://b22i7lk53hw7b<>uid://vhgytrie538e<>uid://dql0ck8m18ex<>uid://d0enhf7gpmh52<>uid://dr1xwywv1ddkj<>uid://c8ku8s8vexols<>uid://bylsj1a8job7u<>uid://dnnr88ufowi0b<>uid://c0kx2lyy1icec<>uid://fjpba34qx8eu<>res://Panel2.gd<>uid://fi112ujjoqo8<>uid://hbiakh7c5l3w<>uid://77pa7q2imhmn<>uid://dcvkb5nmueh1r<>uid://xp5l8vv7bd85<>uid://c04kisf7ljybw<>uid://bye35yhdcewg3<>uid://y6eke7bi8hm3<>uid://cm37wn82aykn6<>uid://bxj0xu6tjia74<>uid://bnq5sd3v8t4ea<>uid://cvjfjv417y5x3<>res://AudioStreamRecord.gd<>uid://7anebcn40fhk<>uid://rp251srcbsj4<>uid://dgwof1dh4cp2d<>uid://ba4grwnqsih6g<>uid://bxyut0xbhc148<>uid://bv3edccq3taul<>uid://rb8s6wni2ahs<>uid://b5e7xeujc7a2i<>res://Prop.tscn<>uid://tqnta1w64qpw<>uid://ch6eh4svkgjqh
 Main.tscn::PackedScene::2247785952735092593::1673503532::0::1::::<><>::res://Mic.gd<>res://Off.tscn<>res://On.tscn<>res://Camera2D.gd<>uid://uk5y3on27it0<>uid://bq6w66c5h513a
 Mic.gd::GDScript::-1::1673503532::0::1::::<>Control<>::
 MicContainer.gd::GDScript::-1::1673503532::0::1::::<>TextureButton<>::
@@ -73,7 +73,7 @@ Testing.tscn::PackedScene::-1::1673503532::0::1::::<><>::res://Testing.gd<>res:/
 TextureRect.gd::GDScript::-1::1673503532::0::1::::<>TextureRect<>::
 Ubuntu-B.ttf::FontFile::5641556276742546369::1673503532::1673503532::1::::<><>::
 VietTeam_main.gd::GDScript::-1::1673503532::0::1::::<>Control<>::
-VietTeam_main_custome_input.gd::GDScript::-1::1673507101::0::1::::<>Control<>::
+VietTeam_main_custome_input.gd::GDScript::-1::1673512489::0::1::::<>Control<>::
 x icon.png::CompressedTexture2D::4174088302404400132::1673503532::1673503532::1::::<><>::
 ::res://Arts/::1673503532
 BGBtnClick.png::CompressedTexture2D::2446683475361321568::1673503532::1673503532::1::::<><>::
