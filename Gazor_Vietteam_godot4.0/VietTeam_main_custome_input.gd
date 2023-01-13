@@ -691,7 +691,7 @@ func bouncy(isBouncy):
 		else:
 			bounceRate -= 0.25
 		displacementY += bounceRate
-		var displacement = center_w + Vector2(displacementX*snapped(image_size[0]/831,0.0001), displacementY*snapped(image_size[1]/552,0.0001))
+		var displacement = center_w + Vector2(displacementX, displacementY*snapped(image_size[1]/552,0.0001))
 		$Off.set_offset(displacement)
 		$On.set_offset(displacement)
 		current_pos = displacement
@@ -872,14 +872,15 @@ func voice_cap_audio(_delta):
 		
 		stopped_talking = false
 		if is_talking == false and can_bounce == true:
-#			$AnimationPlayer.play("Talk")
+#			print("Talking")
+			$AnimationPlayer.play("Talk")
 #			$AnimationPlayer.play("TalkNoBounce")
 			is_talking = true
 #			isBouncy=true
 			is_timer = false
 			$Timer.stop()
 		elif is_talking == false and can_bounce == false:
-#			$AnimationPlayer.play("TalkNoBounce")
+			$AnimationPlayer.play("TalkNoBounce")
 			is_talking = true
 			is_timer = false
 			$Timer.stop()
@@ -904,12 +905,12 @@ func voice_cap_audio(_delta):
 		
 		stopped_talking = false
 #		if is_talking == false and can_bounce == true:
-#		if $Scream.texture == null and can_bounce:
-#			$AnimationPlayer.play("Talk")
-#		elif $Scream.texture == null and can_bounce == false:
-#			$AnimationPlayer.play("TalkNoBounce")
-#		else:
-#			$AnimationPlayer.play("ScreamNoShake")
+		if $Scream.texture == null and can_bounce:
+			$AnimationPlayer.play("Talk")
+		elif $Scream.texture == null and can_bounce == false:
+			$AnimationPlayer.play("TalkNoBounce")
+		else:
+			$AnimationPlayer.play("ScreamNoShake")
 		is_talking = true
 		is_timer = false
 		$Timer.wait_time = delay_main #0.1/pitch_scale
@@ -1392,7 +1393,7 @@ func _on_Timer_timeout():
 		stopped_talking = true
 #		$Timer.wait_time = 0.3
 	
-var music_file = "res://input_audio/test_0p18_spanish.mp3"
+var music_file = "res://input_audio/sample.mp3"
 var music_player = AudioStreamPlayer.new()
 var stream_audio = AudioLoader.new()
 var pitch_scale = 1
@@ -2254,7 +2255,7 @@ func load_camzoom():
 			var auto_focus = min(snapped(float(win_h[0])/float(img_h[0]),0.0001),snapped(float(win_h[1])/float(img_h[1]),0.0001))
 			#if auto_focus > 1:
 				#auto_focus = snapped(float(1)/auto_focus,0.0001)
-			auto_focus = auto_focus*scale_image
+			auto_focus = auto_focus*0.8
 			print("************scale_image************=",scale_image)
 			print("auto_focus: ", auto_focus)
 #				var auto_zoom = snapped(float(1)/auto_focus,0.1)
