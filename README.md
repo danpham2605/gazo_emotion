@@ -3,3 +3,7 @@
 
 2. tạo các folder có tên là resize_input, save_sub_audio, output_predict_gazo
 
+3. Unzip data_Gazo.zip to user:// folder:
+  - Window: %APPDATA%\Godot\Gazo Tuber godot4
+  - Ubuntu: ~/.local/share/godot/app_userdata/Gazo Tuber godot4
+  ** If folder "Gazo Tuber godot4" doesn't exist => run project first time to make folder.
